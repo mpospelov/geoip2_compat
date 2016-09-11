@@ -1,1 +1,1 @@
-require "geoip2_compat/geoip2_compat"
+require 'geoip2_compat/geoip2_compat'

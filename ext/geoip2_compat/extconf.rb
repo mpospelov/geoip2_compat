@@ -1,5 +1,5 @@
-require "mkmf"
-extension_name = "geoip2_compat"
+require 'mkmf'
+extension_name = 'geoip2_compat'
 
 $LDFLAGS << " #{ENV['LDFLAGS']}"
 $CFLAGS << " -std=c99 #{ENV['CFLAGS']}"

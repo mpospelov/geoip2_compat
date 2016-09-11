@@ -56,39 +56,39 @@ static void geoip2_compat_lookup_internal(MMDB_lookup_result_s* result, VALUE ha
 
   if (MMDB_SUCCESS != status) return;
 
-  if (entry_data.has_data) {
-    VALUE val = Qnil;
-    switch (entry_data.type) {
-      case MMDB_DATA_TYPE_UTF8_STRING:
-        val = rb_enc_str_new(entry_data.utf8_string, entry_data.data_size, rb_utf8_encoding());
-        break;
-      case MMDB_DATA_TYPE_BYTES:
-        val = rb_str_new((const char*)entry_data.bytes, entry_data.data_size);
-        break;
-      case MMDB_DATA_TYPE_DOUBLE:
-        val = rb_float_new(entry_data.double_value);
-        break;
-      case MMDB_DATA_TYPE_UINT16:
-        val = UINT2NUM(entry_data.uint16);
-        break;
-      case MMDB_DATA_TYPE_UINT32:
-        val = UINT2NUM(entry_data.uint32);
-        break;
-      case MMDB_DATA_TYPE_INT32:
-        val = INT2NUM(entry_data.int32);
-        break;
-      case MMDB_DATA_TYPE_UINT64:
-        val = UINT2NUM(entry_data.uint64);
-        break;
-      case MMDB_DATA_TYPE_BOOLEAN:
-        val = entry_data.boolean ? Qtrue : Qfalse;
-        break;
-      case MMDB_DATA_TYPE_FLOAT:
-        val = rb_float_new(entry_data.float_value);
-        break;
-    }
-    rb_hash_aset(hash, ID2SYM(name), val);
+  if (!entry_data.has_data) return;
+  VALUE val = Qnil;
+  switch (entry_data.type) {
+    case MMDB_DATA_TYPE_UTF8_STRING:
+      val = rb_enc_str_new(entry_data.utf8_string, entry_data.data_size, rb_utf8_encoding());
+      break;
+    case MMDB_DATA_TYPE_BYTES:
+      val = rb_str_new((const char*)entry_data.bytes, entry_data.data_size);
+      break;
+    case MMDB_DATA_TYPE_DOUBLE:
+      val = rb_float_new(entry_data.double_value);
+      break;
+    case MMDB_DATA_TYPE_UINT16:
+      val = UINT2NUM(entry_data.uint16);
+      break;
+    case MMDB_DATA_TYPE_UINT32:
+      val = UINT2NUM(entry_data.uint32);
+      break;
+    case MMDB_DATA_TYPE_INT32:
+      val = INT2NUM(entry_data.int32);
+      break;
+    case MMDB_DATA_TYPE_UINT64:
+      val = UINT2NUM(entry_data.uint64);
+      break;
+    case MMDB_DATA_TYPE_BOOLEAN:
+      val = entry_data.boolean ? Qtrue : Qfalse;
+      break;
+    case MMDB_DATA_TYPE_FLOAT:
+      val = rb_float_new(entry_data.float_value);
+      break;
   }
+
+  rb_hash_aset(hash, ID2SYM(name), val);
 }
 
 static VALUE geoip2_compat_lookup(VALUE self, VALUE ip)

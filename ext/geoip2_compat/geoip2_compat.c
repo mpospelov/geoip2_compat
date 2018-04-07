@@ -59,6 +59,7 @@ static void geoip2_compat_lookup_internal(MMDB_lookup_result_s* result, VALUE ha
 
   if (!entry_data.has_data) return;
   VALUE val = Qnil;
+
   switch (entry_data.type) {
     case MMDB_DATA_TYPE_UTF8_STRING:
       val = rb_enc_str_new(entry_data.utf8_string, entry_data.data_size, rb_utf8_encoding());
@@ -80,6 +81,9 @@ static void geoip2_compat_lookup_internal(MMDB_lookup_result_s* result, VALUE ha
       break;
     case MMDB_DATA_TYPE_UINT64:
       val = UINT2NUM(entry_data.uint64);
+      break;
+    case MMDB_DATA_TYPE_UINT128:
+      val = ULONG2NUM(entry_data.uint128);
       break;
     case MMDB_DATA_TYPE_BOOLEAN:
       val = entry_data.boolean ? Qtrue : Qfalse;

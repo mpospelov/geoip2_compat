@@ -14,12 +14,12 @@ end
 task :download do
   file = 'test/GeoLite2-City.mmdb'
   unless File.exist?(file)
-    `curl http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz | gzip -d > #{file}`
+    `curl http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz | gzip -d > #{file}`
   end
 end
 
 task :vendor do
-  version = '1.3.1'
+  version = '1.2.0'
   mkdir_p 'tmp/'
   dir = "tmp/libmaxminddb-#{version}"
   cd 'tmp/' do
@@ -27,8 +27,6 @@ task :vendor do
   end
   cp "#{dir}/src/maxminddb-compat-util.h", 'ext/geoip2_compat/maxminddb-compat-util.h'
   cp "#{dir}/src/maxminddb.c", 'ext/geoip2_compat/maxminddb.c'
-  cp "#{dir}/src/data-pool.h", 'ext/geoip2_compat/data-pool.h'
-  cp "#{dir}/src/data-pool.c", 'ext/geoip2_compat/data-pool.c'
 
   cp "#{dir}/include/maxminddb.h", 'ext/geoip2_compat/maxminddb.h'
   cp "#{dir}/include/maxminddb_config.h.in", 'ext/geoip2_compat/maxminddb_config.h'

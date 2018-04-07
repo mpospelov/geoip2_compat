@@ -22,8 +22,8 @@ class GeoIP2Compat
         city: 'San Francisco',
         country_code: 'US',
         country_name: 'United States',
-        latitude: -6.638139558384933e-189,
-        longitude: 2.576658586262684e-215,
+        latitude: 37.7697,
+        longitude: -122.3933,
         postal_code: '94107',
         region: 'CA',
         region_name: 'California'
@@ -36,8 +36,8 @@ class GeoIP2Compat
         city: 'Amsterdam',
         country_code: 'NL',
         country_name: 'Netherlands',
-        latitude: 1.1738269346691874e+204,
-        longitude: 4.655440116403321e+32,
+        latitude: 52.3463,
+        longitude: 4.9305,
         postal_code: '1097',
         region: 'NH',
         region_name: 'North Holland'

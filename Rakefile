@@ -19,7 +19,7 @@ task :download do
 end
 
 task :vendor do
-  version = '1.2.0'
+  version = '1.3.1'
   mkdir_p 'tmp/'
   dir = "tmp/libmaxminddb-#{version}"
   cd 'tmp/' do
@@ -27,6 +27,9 @@ task :vendor do
   end
   cp "#{dir}/src/maxminddb-compat-util.h", 'ext/geoip2_compat/maxminddb-compat-util.h'
   cp "#{dir}/src/maxminddb.c", 'ext/geoip2_compat/maxminddb.c'
+  cp "#{dir}/src/data-pool.h", 'ext/geoip2_compat/data-pool.h'
+  cp "#{dir}/src/data-pool.c", 'ext/geoip2_compat/data-pool.c'
+
   cp "#{dir}/include/maxminddb.h", 'ext/geoip2_compat/maxminddb.h'
   cp "#{dir}/include/maxminddb_config.h.in", 'ext/geoip2_compat/maxminddb_config.h'
 end

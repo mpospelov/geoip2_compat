@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.extensions   = ['ext/geoip2_compat/extconf.rb']
   s.require_paths = ['lib']
 
-  s.add_development_dependency 'rake', '~>10.0'
-  s.add_development_dependency 'rake-compiler', '~> 0'
+  s.add_development_dependency 'rake', '~>12.0'
+  s.add_development_dependency 'rake-compiler', '~> 1'
   s.add_development_dependency 'test-unit', '~> 3'
 end

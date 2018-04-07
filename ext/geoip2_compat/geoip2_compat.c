@@ -7,6 +7,7 @@
 #include <errno.h>
 #include <stdarg.h>
 
+#include <data-pool.h>
 #include <maxminddb.h>
 
 VALUE cgeoip2_compat;
